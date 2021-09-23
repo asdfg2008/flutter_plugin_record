@@ -79,11 +79,15 @@ static DPAudioRecorder *recorderManager = nil;
 }
 
 - (NSString *) createMp3FilePath {
-    return [NSTemporaryDirectory() stringByAppendingPathComponent:@"WAVtemporaryRadio.MP3"];
+    UInt64 recordTime = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *name = [NSString stringWithFormat:@"%llu.MP3", recordTime];
+    return [NSTemporaryDirectory() stringByAppendingPathComponent:name];
   
 }
 - (NSString *) createWaveFilePath {
-    return [NSTemporaryDirectory() stringByAppendingPathComponent:@"WAVtemporaryRadio.wav"];
+    UInt64 recordTime = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *name = [NSString stringWithFormat:@"%llu.wav", recordTime];
+    return [NSTemporaryDirectory() stringByAppendingPathComponent:name];
   
 }
 
